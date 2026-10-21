@@ -1,0 +1,910 @@
+<style>
+/* =========================================================
+   1. VARIÁVEIS GLOBAIS
+   Cores e valores reutilizados em todo o sistema.
+   ========================================================= */
+
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --ink: #18212f;
+  --muted: #586577;
+  --line: #d9e0e8;
+
+  --accent: #2457a7;
+  --accent2: #e9f0fc;
+
+  --warn: #fff4db;
+  --warnline: #d9a441;
+
+  /* Cores específicas do cabeçalho */
+  --header-blue: #087fbd;
+  --header-navy: #0b1d3a;
+  --header-bg: #f0f7ff;
+  --header-line: #d7e5f5;
+
+  /* Cores do aviso clínico */
+  --notice-bg: #fff8eb;
+  --notice-ink: #713f12;
+  --notice-accent: #d97706;
+}
+
+
+/* =========================================================
+   2. RESET E CONFIGURAÇÕES GERAIS
+   Padroniza o dimensionamento dos elementos.
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI",
+        Roboto, Arial, sans-serif;
+}
+
+
+/* =========================================================
+   3. ÁREA PRINCIPAL E TÍTULOS GERAIS
+   ========================================================= */
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 22px;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 3vw, 2.15rem);
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 0 0 12px;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+
+.intro {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+
+/* =========================================================
+   4. CABEÇALHO PRINCIPAL
+   Cartão institucional do instrumento neuropsicanalítico.
+   ========================================================= */
+
+.main-header {
+  max-width: 1000px;
+  margin: 0 auto 28px;
+  padding: 36px 28px 30px;
+
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    var(--header-bg),
+    #ffffff
+  );
+
+  border: 1px solid var(--header-line);
+  border-top: 5px solid var(--header-blue);
+  border-radius: 16px;
+
+  box-shadow: 0 5px 18px rgba(11, 29, 58, 0.08);
+}
+
+
+/* Identificação do instrumento */
+
+.header-label {
+  color: var(--header-blue);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  margin-bottom: 14px;
+}
+
+
+/* Título do cabeçalho */
+
+.main-header h1 {
+  color: var(--header-navy);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 auto 18px;
+
+  /* Remove bordas eventualmente aplicadas ao h1 */
+  border: none;
+}
+
+
+/* Destaque para uma segunda linha do título */
+
+.main-header h1 span {
+  display: block;
+  color: var(--header-blue);
+  margin-top: 6px;
+}
+
+
+/* Etiqueta de identificação experimental */
+
+.experimental-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 0 auto 18px;
+
+  color: #805400;
+  background: #fff4d6;
+
+  border: 1px solid #f0d58a;
+  border-radius: 30px;
+
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+
+/* Texto descritivo do instrumento */
+
+.header-description {
+  max-width: 760px;
+  margin: 0 auto 22px;
+
+  color: #33445c;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+/* Autoria e identificação do responsável */
+
+.main-header .author {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+
+  padding-top: 18px;
+  border-top: 1px solid var(--header-line);
+
+  color: var(--header-navy);
+  font-size: 0.9rem;
+}
+
+
+/* Data ou informação complementar da autoria */
+
+.author-date {
+  color: #52657c;
+}
+
+
+/* =========================================================
+   5. AVISOS E ALERTAS CLÍNICOS
+   Regra única para a classe .notice.
+   ========================================================= */
+
+.notice {
+  max-width: 1000px;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+
+  background: var(--notice-bg);
+  color: var(--notice-ink);
+
+  border: 1px solid #f0dfbd;
+  border-left: 5px solid var(--notice-accent);
+  border-radius: 8px;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   6. CARTÕES E PAINÉIS
+   Contêineres que agrupam seções do formulário.
+   ========================================================= */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+
+  padding: 18px;
+  margin: 14px 0;
+
+  box-shadow: 0 2px 8px #18212f08;
+}
+
+
+/* Seções expansíveis */
+
+details {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+
+  padding: 12px 14px;
+  margin: 12px 0;
+}
+
+
+/* Cabeçalho clicável das seções expansíveis */
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+
+/* Texto dentro das seções expansíveis */
+
+details p,
+details li {
+  color: #374151;
+}
+
+
+/* =========================================================
+   7. CAMPOS DO FORMULÁRIO
+   Rótulos, caixas de texto e seletores.
+   ========================================================= */
+
+label {
+  display: block;
+  font-weight: 650;
+  font-size: 0.92rem;
+  margin: 0 0 5px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 9px 10px;
+
+  font: inherit;
+  color: inherit;
+
+  background: #ffffff;
+  border: 1px solid #bbc6d3;
+  border-radius: 8px;
+}
+
+
+/* Caixas de seleção e botões de opção */
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  accent-color: var(--accent);
+}
+
+
+/* Campos de texto com várias linhas */
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+
+/* =========================================================
+   8. GRADES E ORGANIZAÇÃO DOS CAMPOS
+   ========================================================= */
+
+/* Grade padrão: três colunas */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+
+/* Grade alternativa: duas colunas */
+
+.grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+/* Impede que um campo ultrapasse sua coluna */
+
+.field {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   9. PERGUNTAS E ALTERNATIVAS
+   ========================================================= */
+
+.q {
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0f4;
+}
+
+
+/* Remove a borda da última pergunta */
+
+.q:last-child {
+  border-bottom: 0;
+}
+
+
+/* Enunciado da pergunta */
+
+.q p {
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+
+
+/* Organização das alternativas */
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+
+/* Rótulos das alternativas */
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin: 0;
+  font-weight: 450;
+}
+
+
+/* =========================================================
+   10. TEXTOS AUXILIARES E IDENTIFICADORES
+   ========================================================= */
+
+.muted {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.small {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+
+/* Etiquetas compactas */
+
+.pill {
+  display: inline-block;
+  padding: 3px 8px;
+
+  background: var(--accent2);
+  color: #234a87;
+
+  border-radius: 99px;
+  font-size: 0.82rem;
+}
+
+
+/* =========================================================
+   11. BOTÕES E AÇÕES
+   ========================================================= */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+
+/* Estilo padrão dos botões */
+
+.btn {
+  padding: 10px 14px;
+
+  background: var(--accent);
+  color: #ffffff;
+
+  border: 1px solid var(--accent);
+  border-radius: 9px;
+
+  font: inherit;
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+
+/* Botão secundário */
+
+.btn.secondary {
+  background: #ffffff;
+  color: var(--accent);
+}
+
+
+/* Botão de ação perigosa ou destrutiva */
+
+.btn.danger {
+  background: #ffffff;
+  color: #a12626;
+  border-color: #d8aaaa;
+}
+
+
+/* =========================================================
+   12. RESULTADOS E INDICADORES
+   ========================================================= */
+
+/* Grade de cartões de resultados */
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+
+/* Cartão individual de resultado */
+
+.result {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+
+/* Linha que reúne rótulo, barra e pontuação */
+
+.barrow {
+  display: grid;
+  grid-template-columns: 150px 1fr 45px;
+
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+
+/* Fundo da barra de progresso */
+
+.bartrack {
+  height: 14px;
+  background: #e9edf3;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+
+/* Preenchimento da barra de progresso */
+
+.bar {
+  width: 0%;
+  height: 100%;
+
+  background: #557fc0;
+
+  transition: width 0.2s;
+}
+
+
+/* Valor numérico do resultado */
+
+.score {
+  text-align: right;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   13. GRÁFICOS
+   ========================================================= */
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 260px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   14. LISTAS DE VERIFICAÇÃO
+   ========================================================= */
+
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+
+/* Item individual da lista */
+
+.checkitem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  font-weight: 450;
+}
+
+
+/* Alinhamento da caixa de seleção */
+
+.checkitem input {
+  margin-top: 5px;
+}
+
+
+/* =========================================================
+   15. SEPARADORES E ELEMENTOS DECORATIVOS
+   ========================================================= */
+
+.footerline {
+  height: 1px;
+  background: var(--line);
+  margin: 18px 0;
+}
+
+
+/* Classe reservada para elementos que não devem aparecer
+   na impressão. */
+
+.no-print {
+}
+
+
+/* =========================================================
+   16. RESPONSIVIDADE — TABLETS E CELULARES
+   Ajustes gerais para telas de até 720px.
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+  main {
+    padding: 12px;
+  }
+
+  /* Campos e resultados passam a uma coluna */
+
+  .grid,
+  .grid.two,
+  .results,
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reduz o espaço interno dos cartões */
+
+  .card {
+    padding: 14px;
+  }
+
+  /* Redimensiona as barras de resultados */
+
+  .barrow {
+    grid-template-columns: 115px 1fr 38px;
+  }
+}
+
+
+/* =========================================================
+   17. RESPONSIVIDADE — CABEÇALHO EM TELAS PEQUENAS
+   Ajustes adicionais para telas de até 600px.
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .main-header {
+    padding: 26px 17px 22px;
+    border-radius: 12px;
+  }
+
+  .header-label {
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+  }
+
+  .main-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .header-description {
+    font-size: 0.93rem;
+  }
+
+  /* Empilha as informações de autoria */
+
+  .main-header .author {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Ajusta o aviso clínico */
+
+  .notice {
+    padding: 14px;
+    font-size: 0.92rem;
+  }
+}
+
+
+/* =========================================================
+   18. MODO DE IMPRESSÃO
+   Otimiza o documento para imprimir ou salvar em PDF.
+   ========================================================= */
+
+@media print {
+
+  /* Fundo branco e remoção das margens externas */
+
+  body {
+    background: #ffffff;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Evita sombras e quebra de cartões entre páginas */
+
+  .card,
+  details {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  /* Oculta botões e elementos exclusivos da tela */
+
+  .no-print,
+  .actions {
+    display: none !important;
+  }
+
+  /* Mantém os campos identificáveis na impressão */
+
+  input,
+  select,
+  textarea {
+    border: 1px solid #aaaaaa;
+  }
+
+  /* Imprime o conteúdo de seções recolhidas */
+
+  details:not([open]) > *:not(summary) {
+    display: block;
+  }
+
+  /* Reduz a altura dos gráficos impressos */
+
+  canvas {
+    height: 220px;
+  }
+}
+
+
+
+/* =========================================================
+   MENUS EXPANSÍVEIS
+   Preserva os contornos e destaca os títulos dos menus.
+   ========================================================= */
+
+details {
+  background: #ffffff;
+  color: var(--ink);
+
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+
+  padding: 0;
+  margin: 12px 0;
+
+  overflow: hidden;
+}
+
+/* Título clicável do menu */
+
+summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #234a87;
+
+  background: #e9f0fc;
+
+  padding: 14px 16px;
+  border-bottom: 1px solid transparent;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Destaque ao passar o mouse */
+
+summary:hover {
+  background: #dce8fa;
+  color: #163b76;
+}
+
+/* Menu aberto */
+
+details[open] {
+  border-color: #9db7df;
+  box-shadow: 0 2px 8px rgba(36, 87, 167, 0.08);
+}
+
+/* Título do menu aberto */
+
+details[open] > summary {
+  background: #dce8fa;
+  color: #163b76;
+  border-bottom: 1px solid #cbd8eb;
+}
+
+/* Conteúdo interno do menu */
+
+details > p,
+details > li {
+  color: #374151;
+}
+
+/* Espaçamento do conteúdo, sem alterar os títulos */
+
+details > p,
+details > ul,
+details > ol,
+details > div {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+details > p:last-child {
+  margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   BOTÕES DE AÇÃO
+   Salvar, Imprimir, Importar e Limpar.
+   ========================================================= */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+/* Estilo padrão dos botões */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  background: #2457a7;
+  color: #ffffff;
+
+  border: 1px solid #2457a7;
+  border-radius: 9px;
+
+  font: inherit;
+  font-weight: 650;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+
+.btn:hover {
+  background: #193f80;
+  border-color: #193f80;
+  box-shadow: 0 2px 6px rgba(24, 50, 90, 0.18);
+}
+
+/* Destaque ao navegar pelo teclado */
+
+.btn:focus-visible {
+  outline: 3px solid #91baf5;
+  outline-offset: 3px;
+}
+
+/* Botões secundários: fundo branco e contorno azul */
+
+.btn.secondary {
+  background: #ffffff;
+  color: #2457a7;
+  border: 1px solid #2457a7;
+}
+
+.btn.secondary:hover {
+  background: #e9f0fc;
+  color: #193f80;
+  border-color: #193f80;
+}
+
+/* Botão de limpar: contorno vermelho */
+
+.btn.danger {
+  background: #ffffff;
+  color: #a12626;
+  border: 1px solid #d8aaaa;
+}
+
+.btn.danger:hover {
+  background: #fff0f0;
+  color: #861d1d;
+  border-color: #b94a4a;
+}
+
+/* Botões desativados */
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+
+
+/* =========================================================
+   GRÁFICO DOS RESULTADOS
+   Mantém a área visual destinada à representação gráfica.
+   ========================================================= */
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 260px;
+
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+/* Ajuste para impressão ou exportação em PDF */
+
+@media print {
+  canvas {
+    height: 220px;
+  }
+}
+

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+         <title>Sistema de Anamnese Neuropsicanalítica da Memória 'Experimental'</title>
+      <meta name="description" content="Sistema de Anamnese Neuropsicanalítica da Memória 'Experimental'">	
+      <meta name="author" content="Iraê César Brandão - Desenvolvedor LWI.">
+      <meta name="keywords" content="anamnese, anamnese neuropsicanalítica, neuropsicanálise, avaliação da memória, investigação da memória, amnésia, amnésia anterógrada, amnésia retrógrada, amnésia retroanterógrada, amnésia mista, memória de curto prazo, memória de longo prazo, memória autobiográfica, memória episódica, trauma psicológico, trauma emocional, memória traumática, amnésia dissociativa, entrevista clínica, avaliação neuropsicológica, psicologia clínica, neurociência, funções cognitivas, roteiro de anamnese, instrumento didático experimental, análise exploratória, gráfico de tendências, formulário clínico interativo"> 
+
+
+<!-- Arquivo de estilos CSS -->
+                     <link rel="stylesheet" href="style.css">
+<!-- Arquivo de Script JS -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js">
+                     <script src="script.js"></script>
+
+
+</head>
+<body>
+<main>
+<header class="main-header">
+  <div class="header-label">INSTRUMENTO EXPLORATÓRIO</div>
+
+  <h1>
+    Sistema de Anamnese
+    <span>Neuropsicanalítica da Memória</span>
+  </h1>
+
+  <div class="experimental-tag">VERSÃO EXPERIMENTAL</div>
+
+  <p class="header-description">
+    Instrumento exploratório para organizar a entrevista inicial
+    e comparar hipóteses de alterações da memória.
+    Não é um teste validado nem uma ferramenta diagnóstica.
+  </p>
+
+  <div class="author">
+    <strong>Autor do sistema:</strong> Iraê César Brandão
+    <span class="author-date">20 de outubro de 2026</span>
+<img src="logo_neuro.jpg" alt="Descrição da imagem">
+  </div>
+</header>
+
+<div class="notice">
+  <strong>Antes de começar:</strong>
+  perda de memória súbita, confusão aguda, alteração da fala,
+  fraqueza, convulsão ou traumatismo craniano recente exigem
+  avaliação médica urgente. Não atrase o atendimento para
+  preencher este formulário.
+</div>
+
+<details open>
+  <summary>📘 Tutorial de uso (clique para recolher/expandir)</summary>
+  <ol>
+    <li>Preencha apenas os dados necessários. Use um código interno em vez de nome completo quando possível.</li>
+    <li>Explique ao paciente que pode pedir pausa, não responder ou corrigir uma resposta.</li>
+    <li>Comece pelas perguntas comuns; depois faça perguntas direcionadas sem sugerir respostas ou pressupor trauma.</li>
+    <li>Marque “Sim”, “Não”, “Parcialmente” ou “Não avaliado” conforme o relato e a observação. Não marque “Não” quando a resposta for desconhecida.</li>
+    <li>O gráfico resume somente as marcações deste formulário. Ele mostra tendências de respostas, não probabilidade, diagnóstico ou gravidade clínica.</li>
+    <li>Revise o resumo, acrescente observações e registre local, data e identificação/formação profissional. Use “Imprimir / salvar em PDF” para documentar.</li>
+    <li>Os dados permanecem nesta página enquanto ela estiver aberta; não há envio automático para servidor. Ao fechar ou atualizar, os dados podem ser perdidos. Não use em dispositivo compartilhado sem proteção.</li>
+  </ol>
+</details>
+
+<section class="card">
+<h2>1. Identificação e contexto</h2>
+<div class="grid">
+  <div class="field"><label for="patientName">Nome ou código do paciente</label><input id="patientName" autocomplete="off" placeholder="Preferir código quando possível"></div>
+  <div class="field"><label for="age">Idade (anos)</label><input id="age" type="number" min="0" max="120" inputmode="numeric"></div>
+  <div class="field"><label for="sex">Sexo (se pertinente)</label><select id="sex"><option value="">Não informado</option><option>Feminino</option><option>Masculino</option><option>Intersexo</option><option>Prefere não informar</option><option>Outro / autodescrição</option></select></div>
+  <div class="field"><label for="date">Data da entrevista</label><input id="date" type="date"></div>
+  <div class="field"><label for="time">Horário</label><input id="time" type="time"></div>
+  <div class="field"><label for="source">Fonte das informações</label><select id="source"><option>Paciente</option><option>Paciente e familiar/acompanhante</option><option>Familiar/acompanhante</option><option>Prontuário/outro</option><option>Mista / não definida</option></select></div>
+  <div class="field"><label for="companion">Acompanhante e vínculo (opcional)</label><input id="companion" placeholder="Somente se necessário"></div>
+  <div class="field"><label for="referral">Encaminhamento / motivo da consulta</label><input id="referral"></div>
+  <div class="field"><label for="onset">Início percebido</label><select id="onset"><option value="">Não definido</option><option>Súbito</option><option>Gradual</option><option>Episódico</option><option>Flutuante</option><option>Não sabe informar</option></select></div>
+</div>
+<p class="small">Evite coletar endereço completo, documentos ou outros identificadores sem necessidade clínica e base legal apropriada.</p>
+</section>
+
+<section class="card">
+<h2>2. Perguntas iniciais comuns aos três quadros</h2>
+<p class="muted">Faça as perguntas com linguagem neutra. O paciente pode não saber ou preferir não responder.</p>
+<div id="commonQuestions"></div>
+<div class="field"><label for="commonNotes">Observações do primeiro contato</label><textarea id="commonNotes" placeholder="Registre falas relevantes de forma descritiva, sem inferir causas."></textarea></div>
+</section>
+
+<section class="card">
+<h2>3. Perguntas direcionadas por domínio de memória</h2>
+<p class="muted">As respostas orientam a investigação, mas não confirmam um tipo de amnésia isoladamente.</p>
+<div id="specificQuestions"></div>
+</section>
+
+<section class="card">
+<h2>4. Contexto clínico, segurança e fatores associados</h2>
+<div id="clinicalQuestions"></div>
+<div class="field"><label for="clinicalNotes">Observações clínicas adicionais</label><textarea id="clinicalNotes" placeholder="Início, duração, evolução, sono, medicações/substâncias, antecedentes e dados de terceiros, quando pertinentes."></textarea></div>
+</section>
+
+<section class="card">
+<h2>5. Parecer exploratório e gráfico de tendências</h2>
+<p class="muted">O resumo compara respostas indicativas de dificuldade em recordar o passado e em registrar novas informações. “Não avaliado” e “Não sabe” não contam como evidência. O resultado não é diagnóstico e não deve ser usado como pontuação clínica validada.</p>
+<div class="results">
+  <div class="result"><h3>Memória recente / novas informações</h3><div id="recentSummary">Ainda sem respostas suficientes.</div></div>
+  <div class="result"><h3>Memória autobiográfica passada</h3><div id="pastSummary">Ainda sem respostas suficientes.</div></div>
+  <div class="result"><h3>Contexto associado</h3><div id="contextSummary">Ainda sem respostas suficientes.</div></div>
+</div>
+<div class="footerline"></div>
+<h3>Gráfico de tendências (respostas marcadas como “Sim” ou “Parcialmente”)</h3>
+<div id="bars"></div>
+<canvas id="trendChart" width="900" height="260" aria-label="Gráfico de tendências das respostas"></canvas>
+<p class="small">O gráfico é uma visualização descritiva das marcações. Não calcula probabilidade, não mede gravidade e não substitui entrevista, exame, avaliação neuropsicológica ou investigação médica.</p>
+<div class="field"><label for="impression">Síntese / hipótese de trabalho do profissional</label><textarea id="impression" placeholder="Descreva hipóteses e incertezas; não usar o resultado automático como diagnóstico."></textarea></div>
+<div class="field"><label for="plan">Encaminhamentos / próximos passos</label><textarea id="plan" placeholder="Ex.: avaliação médica, neuropsicológica, acompanhamento, coleta de informações complementares."></textarea></div>
+</section>
+
+<section class="card">
+<h2>6. Registro profissional</h2>
+<div class="grid two">
+  <div class="field"><label for="place">Local (cidade/serviço, sem endereço desnecessário)</label><input id="place"></div>
+  <div class="field"><label for="professionalName">Nome do profissional</label><input id="professionalName"></div>
+  <div class="field"><label for="professionalId">Identificador profissional (se aplicável)</label><input id="professionalId" placeholder="Conselho e número, quando pertinente"></div>
+  <div class="field"><label for="profession">Profissão / formação</label><input id="profession" placeholder="Ex.: psicologia, medicina, pesquisa acadêmica"></div>
+  <div class="field"><label for="role">Cargo / função</label><input id="role"></div>
+  <div class="field"><label for="signatureDate">Data do registro</label><input id="signatureDate" type="date"></div>
+</div>
+<div class="field"><label for="signatureNotes">Assinatura / observações de responsabilidade</label><textarea id="signatureNotes" placeholder="Preencher conforme regras da instituição e profissão."></textarea></div>
+</section>
+
+<details>
+  <summary>⚠️ Restrições, limites e uso responsável</summary>
+  <ul>
+    <li>Este material é experimental, didático e organizacional; não é instrumento psicométrico validado, protocolo clínico oficial ou dispositivo médico.</li>
+    <li>Não diagnostica amnésia anterógrada, retrógrada, mista, dissociativa, demência, TEPT ou qualquer outra condição.</li>
+    <li>Respostas de entrevista não demonstram por si só trauma, repressão, dissociação, dano cerebral ou mecanismo neurobiológico específico. Não induza recordações nem trate lacunas como prova de trauma.</li>
+    <li>As categorias podem coexistir e há múltiplas causas possíveis, incluindo neurológicas, clínicas, medicamentosas e relacionadas a substâncias.</li>
+    <li>Use julgamento profissional, consentimento informado, confidencialidade, acessibilidade e normas éticas/legais aplicáveis. Compartilhe informações somente com autorização ou outra base legal adequada.</li>
+    <li>Solicite segunda opinião ou avaliação especializada quando necessário. O usuário/autor deste roteiro não deve apresentar os resultados automáticos como conclusões clínicas; a responsabilidade pelo uso e interpretação cabe aos profissionais envolvidos, dentro de suas competências e deveres.</li>
+    <li>Não existe garantia de exatidão ou adequação a um caso individual. Não use este roteiro para decisões urgentes, periciais ou de alto impacto sem instrumentos e avaliação apropriados.</li>
+  </ul>
+</details>
+
+<div class="actions no-print">
+  <button class="btn" id="updateBtn" type="button">Atualizar parecer e gráfico</button>
+  <button class="btn secondary" id="printBtn" type="button">Imprimir / salvar em PDF</button>
+  <button class="btn secondary" id="exportBtn" type="button">Exportar resumo (.txt)</button>
+  <button class="btn danger" id="clearBtn" type="button">Limpar formulário</button>
+</div>
+<p class="small">Privacidade: este arquivo funciona localmente no navegador e não envia dados pela internet. Ainda assim, o conteúdo exibido pode ser visto por quem tiver acesso ao dispositivo ou à impressão. Armazene e descarte registros de acordo com as regras aplicáveis.</p>
+</main>
+
+                     <script src="script.js"></script>
+
+</body>
+
+<footer>
+        <p  style="text-align:center; font-size: 12px;"> Sobre o projeto (Detalhes)<a href="detalhes.pdf" style="color: blue;" target="_blank">Sobre o Projeto</a></p>
+       <p  style="text-align:center; font-size: 12px;"> © 2026 — Iraê César Brandão (Dev)  (Page for academic purposes.) — <a href="license.html" style="color: blue;" target="_blank">Licença Acadêmica (AREUL)</a></p>
+  </footer>
+</html>
